@@ -22,9 +22,3 @@ jobs:
         run: echo "NODE_OPTIONS=${NODE_OPTIONS}"
       - name: Test
         run: ./run-e2e.sh
-      - name: Archive E2E results
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: e2e-results-dashboard-${{ github.sha }}
-          path: ./platform/clients/dashboard/tests/e2e/!results/
