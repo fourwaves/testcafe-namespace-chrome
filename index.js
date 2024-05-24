@@ -7,7 +7,7 @@ test("Test 1", async (t) => {
 });
 
 test("Test 2", async (t) => {
-  await t.expect(Selector("textarea25235").exists).eql(true);
+  await t.expect(Selector("textarea").exists).eql(true);
 });
 
 test("Test 3", async (t) => {
