@@ -16,6 +16,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.11.0
+      - name: Install deps
+        run: yarn install
       - name: Test
         run: ./run-e2e.sh
       - name: print NODE_OPTIONS
