@@ -18,10 +18,10 @@ jobs:
           node-version: 20.11.0
       - name: Install deps
         run: yarn install
-      - name: Test
-        run: ./run-e2e.sh
       - name: print NODE_OPTIONS
         run: echo "NODE_OPTIONS=${NODE_OPTIONS}"
+      - name: Test
+        run: ./run-e2e.sh
       - name: Archive E2E results
         if: ${{ failure() }}
         uses: actions/upload-artifact@v4
