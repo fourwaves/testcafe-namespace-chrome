@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - main
+name: CI
+jobs:
+  acceptance_tests_dashboard_namespace:
+    name: Testing
+    runs-on: namespace-profile-32x64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11.0
+      - name: Test
+        run: ./run-e2e.sh
+      - name: print NODE_OPTIONS
+        run: echo "NODE_OPTIONS=${NODE_OPTIONS}"
+      - name: Archive E2E results
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-results-dashboard-${{ github.sha }}
+          path: ./platform/clients/dashboard/tests/e2e/!results/
