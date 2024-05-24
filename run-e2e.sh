@@ -8,7 +8,7 @@ else
 fi
 
 echo '######## List browsers'
-testcafe --list-browsers
+npx testcafe --list-browsers
 
 echo '######## Run tests'
-testcafe 'chrome:headless --disable-setuid-sandbox --window-size=1920x1080' --concurrency 7 index.js
+npx testcafe 'chrome:headless --disable-setuid-sandbox --window-size=1920x1080' --concurrency 7 index.js
